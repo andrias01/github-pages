@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/github-pages/",
+  base: "/",
   plugins: [react()]
   // base: "https://andrias01.github.io/github-pages",
   // npm i --save-dev gh-pages

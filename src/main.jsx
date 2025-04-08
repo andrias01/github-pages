@@ -7,7 +7,7 @@ import { AdminProviderWrapper } from './contexts/Admin.context.jsx'
 createRoot(document.getElementById('root')).render(
   //<StrictMode>
   <AdminProviderWrapper>
-    <BrowserRouter basename="/github-pages">
+    <BrowserRouter>
       <App />
     </BrowserRouter>
   </AdminProviderWrapper>
