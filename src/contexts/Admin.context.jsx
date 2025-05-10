@@ -13,6 +13,16 @@ const mockAdmins = [
     password: "sideghparkour19"
   },
   {
+    id: "7803ce6c-6ade-4db1-a194-5eaff3fb58cb",
+    name: "Juan Daniel",
+    lastName: "Rodriguez Giraldo",
+    idType: "ID",
+    idNumber: "1007109578",
+    contactNumber: "3127068048",
+    email: "123@gmail.com",
+    password: "123456789"
+  },
+  {
     id: "9083f135-cff5-4dce-bb75-0643b5616a20",
     name: "Benito",
     lastName: "Camelas bien",

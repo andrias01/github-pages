@@ -3,6 +3,9 @@ import HomePage from "./HomePage"
 import LoginAdminPage from "./LoginAdminPage"
 import ShowAdmins from "../components/ShowAdmins"
 import AdminManagement from "../components/AdminManagement"
+import CommonZone from "../components/CommonZone"
+import Property from "../components/Property"
+
 
 function Pages() {
   return (
@@ -11,6 +14,8 @@ function Pages() {
         <Route path="/loginAdmin" element={<LoginAdminPage />} />
         <Route path="/ShowAdmins" element={<ShowAdmins />} />
         <Route path="/ManagementAdmin" element={<AdminManagement />} />
+        <Route path="/CommonZone" element={<CommonZone />} />
+        <Route path="/Property" element={<Property />} />
 
 
     </Routes>
