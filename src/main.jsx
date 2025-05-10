@@ -4,12 +4,15 @@ import './index.css'
 import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import { AdminProviderWrapper } from './contexts/Admin.context.jsx'
+import { PorteroProviderWrapper } from './contexts/Porteto.context.jsx'
 createRoot(document.getElementById('root')).render(
   //<StrictMode>
-  <AdminProviderWrapper>
-    <BrowserRouter basename="/github-pages">
-      <App />
-    </BrowserRouter>
-  </AdminProviderWrapper>
+  <PorteroProviderWrapper>
+    <AdminProviderWrapper>
+      <BrowserRouter basename="/github-pages">
+        <App />
+      </BrowserRouter>
+    </AdminProviderWrapper>
+  </PorteroProviderWrapper>
   //</StrictMode>,
 )
