@@ -49,7 +49,7 @@ const LoginAdmin = () => {
                     <form onSubmit={handleSubmit}>
                         <div className="information">
                             <label className="textInput" htmlFor="email">
-                                Correo o usuario
+                                Correo
                             </label>
                             <input 
                                 id="email" 

@@ -4,11 +4,11 @@ import "../cssComponents/AdminDashboard.css";
 
 const buttonData = [
     { label: "Conjuntos", icon: "🏢", path: "/" },
-    { label: "Zonas Comunes", icon: "🧱", path: "/" },
+    { label: "Zonas Comunes", icon: "🧱", path: "/CommonZone" },
     { label: "Agendas", icon: "📆", path: "/" },
     { label: "Administradores", icon: "👥", path: "/ManagementAdmin" },
     { label: "Porteros", icon: "🧍", path: "/" },
-    { label: "Viviendas", icon: "🏠", path: "/" },
+    { label: "Viviendas", icon: "🏠", path: "/Property" },
     { label: "Residentes", icon: "👨‍👩‍👧", path: "/" },
     { label: "Asignar Usuarios", icon: "✅", path: "/" },
 ];
