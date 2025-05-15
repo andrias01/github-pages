@@ -10,7 +10,7 @@ import Property from "../components/Property"
 function Pages() {
   return (
     <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/github-pages" element={<HomePage />} />
         <Route path="/loginAdmin" element={<LoginAdminPage />} />
         <Route path="/ShowAdmins" element={<ShowAdmins />} />
         <Route path="/ManagementAdmin" element={<AdminManagement />} />
