@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   base: "/",
+  // base: "/",
   plugins: [react()]
   // base: "https://andrias01.github.io/github-pages",
   // npm i --save-dev gh-pages
@@ -12,4 +13,7 @@ export default defineConfig({
   // en consola
   // npm run deploy
   // https://www.youtube.com/watch?v=ZI7MXe-6HzA
+  // para netlify su configuracion es diferente dejar npm run build
+  // y en package.json agregar dist
+  
 })
