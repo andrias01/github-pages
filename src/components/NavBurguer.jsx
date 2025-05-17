@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
 import '../cssComponents/NavBurguer.css'
-import Logo from '../resources/pictures/Logo.jpeg';
+import Logo from '../resources/pictures/logoVictus.png';
 
 function NavBurguer() {
     return (
         <>
             <div className="header">
                 <nav className="navbar">
-                    <img src={Logo} alt="Logo" />
+                        <img src={Logo} alt="Logo" />   
                     <div className="name1">
                         <strong>Victus</strong>
                         <span className="name2">Residencias</span>

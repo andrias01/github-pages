@@ -11,7 +11,7 @@ function Property() {
     createProperty,
     updateProperty,
     deleteProperty,
-    findPropertyBypropertyType,
+    findPropertysByName,
     error,
     loading
   } = useContext(PropertyContext);
@@ -32,7 +32,7 @@ function Property() {
     if(searchTerm.trim()=== ""){
       setFilteredProperty(propertys);
     }else{
-        findPropertyBypropertyType(searchTerm).then((results) => {
+        findPropertysByName(searchTerm).then((results) => {
         setFilteredProperty(results);
       });
     }
@@ -86,36 +86,39 @@ function Property() {
           <Link className="ButtonLogOut" to={"/"}>
             Cerrar Sesión
           </Link>
+          <Link className="ButtonBack" to={"/ShowAdmins"}>
+            Regresar
+          </Link>
           <h2>Gestión de Viviendas</h2>
         <form className="admin-form" onSubmit={handleSubmit}>
           <input
-              type="text"
-              name="propertyType"
-              placeholder="Tipo de Vivienda"
-              value={form.propertyType}
-              onChange={handleInputChange}
-              required
-            />
+            type="text"
+            name="propertyType"
+            placeholder="Tipo de Vivienda"
+            value={form.propertyType}
+            onChange={handleInputChange}
+            required
+          />
           <input
-              type="propertyNumber"
-              name="propertyNumber"
-              placeholder="Número de la Propiedad"
-              value={form.propertyNumber}
-              onChange={handleInputChange}
-            />
+            type="propertyNumber"
+            name="propertyNumber"
+            placeholder="Número de la Propiedad"
+            value={form.propertyNumber}
+            onChange={handleInputChange}
+          />
             
             
-            <button type="submit">{isEditing ? "Actualizar" : "Crear"}</button>
+          <button type="submit">{isEditing ? "Actualizar" : "Crear"}</button>
 
-            {/* 🔍 Buscador */}
-            <input
-              type="text"
-              placeholder="Buscar por Tipo de Vivienda..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="search-input"
-            />
-          </form>
+          {/* 🔍 Buscador */}
+          <input
+            type="text"
+            placeholder="Buscar por Tipo de Vivienda..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="search-input"
+          />
+        </form>
           {loading && <p>Cargando Viviendas...</p>}
           {error && <p style={{ color: "red" , margin: 10}}>{error}</p>}
 
@@ -125,6 +128,7 @@ function Property() {
               <tr>
                 <th>Tipo de Vivienda</th>
                 <th>Número de Vivienda</th>
+                <th>Acción</th>
               </tr>
             </thead>
             <tbody>

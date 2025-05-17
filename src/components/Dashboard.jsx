@@ -40,7 +40,7 @@ function AdminDashboard() {
         <>
             <div className="admin-dashboard">
                 <header className="admin-topbar">
-                    <h2>Hola, <span>{adminName || "Administrador"}</span></h2>
+                    <h2 className="adminNameTittle">Hola, <span>{adminName || "Administrador"}</span></h2>
                     <button className="ButtonAccept" onClick={handleLogout}>
                         Cerrar Sesión
                     </button>

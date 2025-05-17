@@ -20,7 +20,7 @@ const mockAdmins = [
     idNumber: "1007109578",
     contactNumber: "3127068048",
     email: "123@gmail.com",
-    password: "123456789"
+    password: "1"
   },
   {
     id: "9083f135-cff5-4dce-bb75-0643b5616a20",
@@ -86,12 +86,12 @@ function AdminProviderWrapper(props) {
   const getAdmin = () => {
     try {
       // Simulamos un pequeño retraso para imitar una petición a API
-      setTimeout(() => {
-        setAdmins(mockAdmins);
-        setFilteredAdmins(mockAdmins);
-        setError(null);
-        setLoading(false);
-      }, 500);
+        setTimeout(() => {
+          setAdmins(mockAdmins);
+          setFilteredAdmins(mockAdmins);
+          setError(null);
+          setLoading(false);
+        }, 500);
     } catch (err) {
       console.error("Error al cargar administradores:", err);
       setError("No se pudo cargar la lista de administradores. Intenta más tarde.");
@@ -125,22 +125,22 @@ function AdminProviderWrapper(props) {
 
   // Crear nuevo administrador
   const createAdmin = (newAdmin) => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        // Generamos un ID único
-        const id = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-        const adminWithId = { ...newAdmin, id };
-        
-        // Actualizamos el estado con el nuevo administrador
-        setAdmins(prevAdmins => [...prevAdmins, adminWithId]);
-        setFilteredAdmins(prevFiltered => [...prevFiltered, adminWithId]);
-        
-        // También actualizamos nuestros datos mock para mantener consistencia
-        mockAdmins.push(adminWithId);
-        
-        resolve({ success: true, data: adminWithId });
-      }, 300);
-    });
+      return new Promise((resolve) => {
+          setTimeout(() => {
+            // Generamos un ID único
+            const id = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+            const adminWithId = { ...newAdmin, id };
+            
+            // Actualizamos el estado con el nuevo administrador
+            setAdmins(prevAdmins => [...prevAdmins, adminWithId]);
+            setFilteredAdmins(prevFiltered => [...prevFiltered, adminWithId]);
+            
+            // También actualizamos nuestros datos mock para mantener consistencia
+            mockAdmins.push(adminWithId);
+            
+            resolve({ success: true, data: adminWithId });
+          }, 300);
+      });
   };
 
   // Eliminar un administrador por ID

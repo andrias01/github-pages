@@ -104,6 +104,9 @@ function AdminManagement() {
         <Link className="ButtonLogOut" to={"/"}>
           Cerrar Sesión
         </Link>
+        <Link className="ButtonBack" to={"/ShowAdmins"}>
+          Regresar
+        </Link>
         <h2>Gestión de Administradores</h2>
 
 
