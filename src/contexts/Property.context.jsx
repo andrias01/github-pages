@@ -1,5 +1,28 @@
 import { createContext, useEffect, useState } from "react";
 
+const mockPropertys = [
+    {
+        id: "7803ce6c-6ade-5db1-a194-5eaff3fb58ca",
+        propertyType: "Apartamento",
+        propertyNumber: "102",
+    },
+    {
+        id: "7803ce6c-7ade-5db1-a194-5eaff3fb58ca",
+        propertyType: "Casa",
+        propertyNumber: "10",
+    },
+    {
+        id: "7803ce6c-8ade-5db1-a194-5eaff3fb58ca",
+        propertyType: "Apartamento",
+        propertyNumber: "304",
+    },
+    {
+        id: "7803ce6c-9ade-5db1-a194-5eaff3fb58ca",
+        propertyType: "Casa",
+        propertyNumber: "11",
+    }
+];
+
 const PropertyContext = createContext();
 
 function PropertyProviderWrapper(props) {
@@ -12,20 +35,18 @@ function PropertyProviderWrapper(props) {
     // Obtener todos los administradores
     const getProperty = async () => {
         try {
-            setLoading(true);
-            const res = await fetch("https://backend-victusrenderservidor.onrender.com/victusresidencias/api/v1/administrator/all");
-            if (!res.ok) throw new Error("No se pudo obtener la lista de administradores");
-      
-            const data = await res.json();
-            setPropertys(data.data || []);
-            setFilteredPropertys(data.data || []);
-            setError(null); // limpia cualquier error anterior
-          } catch (err) {
-            console.error("Error al cargar administradores:", err);
-            setError("No se pudo cargar la lista de administradores. Intenta más tarde.");
-          } finally {
+        // Simulamos un pequeño retraso para imitar una petición a API
+            setTimeout(() => {
+            setPropertys(mockPropertys);
+            setFilteredPropertys(mockPropertys);
+            setError(null);
             setLoading(false);
-          }
+            }, 500);
+        } catch (err) {
+        console.error("Error al cargar administradores:", err);
+        setError("No se pudo cargar la lista de administradores. Intenta más tarde.");
+        setLoading(false);
+        }
     };
 
     useEffect(() => {
@@ -41,72 +62,77 @@ function PropertyProviderWrapper(props) {
     };
 
     const findPropertysByName = async (name) => {
-        try {
-            const response = await fetch("https://backend-victusrenderservidor.onrender.com/victusresidencias/api/v1/administrator/all");
-            const data = await response.json();
-            const allPropertys = data.data;
-
-            // Filtra por nombre
-            const filtered = allPropertys.filter((property) =>
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                const filtered = mockPropertys.filter((property) =>
                 property.name.toLowerCase().includes(name.toLowerCase())
-            );
-
-            return filtered;
-        } catch (error) {
-            console.error("Error filtrando administradores:", error);
-            return [];
-        }
+                );
+                resolve(filtered);
+            }, 300);
+        });
     };
 
 
-    // Crear nuevo administrador
-    const createProperty = async (newProperty) => {
-        try {
-            const response = await fetch("https://backend-victusrenderservidor.onrender.com/victusresidencias/api/v1/administrator/create", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(newProperty)
-            });
-            if (response.ok) {
-                await getProperty();
-            }
-        } catch (e) {
-            console.error("Error al crear administrador:", e);
-        }
+    // Crear nueva Vivienda
+    const createProperty = (newProperty) => {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                // Generamos un ID único
+                const id = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+                const propertyWithId = { ...newProperty, id };
+                
+                // Actualizamos el estado con la nueva Vivienda
+                setPropertys(prevPropertys => [...prevPropertys, propertyWithId]);
+                setFilteredPropertys(prevFiltered => [...prevFiltered, propertyWithId]);
+                
+                // También actualizamos nuestros datos mock para mantener consistencia
+                mockPropertys.push(propertyWithId);
+                
+                resolve({ success: true, data: propertyWithId });
+            }, 300);
+        });
     };
 
     // Eliminar un administrador por ID
     const deleteProperty = async (id) => {
-        try {
-            const response = await fetch(`https://backend-victusrenderservidor.onrender.com/victusresidencias/api/v1/administrator/${id}`, {
-                method: "DELETE"
-            });
-            if (response.ok) {
-                await getProperty();
-            }
-        } catch (e) {
-            console.error("Error al eliminar administrador:", e);
-        }
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                // Filtramos el administrador del estado
+                const updatedPropertys = propertys.filter(property => property.id !== id);
+                setPropertys(updatedPropertys);
+                setFilteredPropertys(updatedPropertys);
+                
+                // También actualizamos nuestros datos mock
+                const indexToRemove = mockPropertys.findIndex(property => property.id === id);
+                if (indexToRemove !== -1) {
+                mockPropertys.splice(indexToRemove, 1);
+                }
+                
+                resolve({ success: true });
+            }, 300);
+        });
     };
 
     // Modificar un administrador por ID
     const updateProperty = async (id, updatedData) => {
-        try {
-            const response = await fetch(`https://backend-victusrenderservidor.onrender.com/victusresidencias/api/v1/administrator/${id}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(updatedData)
-            });
-            if (response.ok) {
-                await getProperty();
-            }
-        } catch (e) {
-            console.error("Error al actualizar administrador:", e);
-        }
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                // Actualizamos en el estado
+                const updatedPropertys = propertys.map(property => 
+                property.id === id ? { ...property, ...updatedData } : property
+                );
+                setPropertys(updatedPropertys);
+                setFilteredPropertys(updatedPropertys);
+                
+                // También actualizamos nuestros datos mock
+                const propertyIndex = mockPropertys.findIndex(property => property.id === id);
+                if (propertyIndex !== -1) {
+                mockPropertys[propertyIndex] = { ...mockPropertys[propertyIndex], ...updatedData };
+                }
+                
+                resolve({ success: true });
+            }, 300);
+        });
     };
 
     return (

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 function ZonaComun() {
   const {
-    commonZone,
+    commonZones,
     getCommonZone,
     createCommonZone,
     updateCommonZone,
@@ -16,7 +16,7 @@ function ZonaComun() {
     loading
   } = useContext(CommonZoneContext);
 
-  const [filteredCommonZone, setFilteredCommonZone] = useState([]);
+  const [filteredCommonZone, setFilteredCommonZones] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [form, setForm] = useState({
     id: "",
@@ -34,13 +34,13 @@ function ZonaComun() {
 
   useEffect(() => {
     if(searchTerm.trim()=== ""){
-      setFilteredCommonZone(commonZone);
+      setFilteredCommonZones(commonZones);
     }else{
       findCommonZoneByName(searchTerm).then((results) => {
-        setFilteredCommonZone(results);
+        setFilteredCommonZones(results);
       });
     }
-  }, [searchTerm, commonZone]);
+  }, [searchTerm, commonZones]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -98,13 +98,16 @@ function ZonaComun() {
           <Link className="ButtonLogOut" to={"/"}>
             Cerrar Sesión
           </Link>
+          <Link className="ButtonBack" to={"/ShowAdmins"}>
+            Regresar
+          </Link>
         <h2>Gestión de Zonas Comunes</h2>
 
         <form className="admin-form" onSubmit={handleSubmit}>
           <input
               type="text"
               name="name"
-              placeholder="Nombre"
+              placeholder="Nombre de la Zona"
               value={form.name}
               onChange={handleInputChange}
               required
@@ -124,10 +127,30 @@ function ZonaComun() {
               onChange={handleInputChange}
               required
             />
+            <input
+              type="usageTime"
+              name="usageTime"
+              placeholder="Tiempo de Uso"
+              value={form.usageTime}
+              onChange={handleInputChange}
+              required
+            />
+            
+            <select name="unidadTiempo">
+              <option 
+              value={form.usingTimeUnit} 
+              onChange={handleInputChange}
+              required>Minuto</option>
+              <option 
+              value={form.usingTimeUnit}
+              onChange={handleInputChange}
+              required>Hora</option>
+            </select>
             {/* Poner Tiempo de uso, ya que no se sabe si se tendrà horas fijas o que el usuario ponga la hora */}
 
+           
             <input
-              type="norms"
+              type="string"
               name="norms"
               placeholder="Normas De Uso"
               value={form.rule}
@@ -156,6 +179,8 @@ function ZonaComun() {
                 <th>Nombre</th>
                 <th>Descripción</th>
                 <th>Capacidad</th>
+                <th>Tiempo Uso</th>
+                <th>Unidad</th>
                 <th>Reglas</th>
                 <th>Acciones</th>
               </tr>
@@ -165,7 +190,11 @@ function ZonaComun() {
                 <tr key={commonZone.id}>
                   <td>{commonZone.name}</td>
                   <td>{commonZone.description}</td>
-                  <td>{commonZone.peopleCapacity0}</td>
+                  <td>{commonZone.peopleCapacity}</td>
+                  <td>{commonZone.usageTime}</td>
+                  <td>{commonZone.usingTimeUnit}</td>
+                  <td>{commonZone.rule}</td>
+
                   <td>
                     <button onClick={() => handleEdit(admin)}>Editar</button>
                     <button onClick={() => handleDelete(admin.id)}>Eliminar</button>
