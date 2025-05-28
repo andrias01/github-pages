@@ -7,7 +7,7 @@ function NavBurguer() {
         <>
             <div className="header">
                 <nav className="navbar">
-                        <img src={Logo} alt="Logo" />   
+                    <img src={Logo} alt="Logo" />
                     <div className="name1">
                         <strong>Victus</strong>
                         <span className="name2">Residencias</span>
@@ -15,7 +15,7 @@ function NavBurguer() {
 
                     <label className="labe_hamburguesa" htmlFor="menu_hamburguesa">
                         <svg
-                            xmlns="http://www.w3.org/2000/svg"  
+                            xmlns="http://www.w3.org/2000/svg"
                             width="35"
                             height="35"
                             fill="currentColor"
@@ -33,7 +33,11 @@ function NavBurguer() {
 
                     <ul className="ul_links">
                         <li className="li_links">
-                            <Link to={"/loginAdmin"} className="link">
+                            {/* <Link to={"/loginAdmin"} className="link"> */}
+                            {/* <i className="icon_admin"></i> */}
+                            {/* <p>Administrador</p> */}
+                            {/* </Link> */}
+                            <Link to={"/prueba"} className="link">
                                 <i className="icon_admin"></i>
                                 <p>Administrador</p>
                             </Link>
