@@ -12,4 +12,5 @@ export default defineConfig({
   // en consola
   // npm run deploy
   // https://www.youtube.com/watch?v=ZI7MXe-6HzA
+  
 })
