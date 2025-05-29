@@ -33,14 +33,14 @@ function NavBurguer() {
 
                     <ul className="ul_links">
                         <li className="li_links">
-                            {/* <Link to={"/loginAdmin"} className="link"> */}
-                            {/* <i className="icon_admin"></i> */}
-                            {/* <p>Administrador</p> */}
-                            {/* </Link> */}
-                            <Link to={"/prueba"} className="link">
-                                <i className="icon_admin"></i>
-                                <p>Administrador</p>
+                            <Link to={"/loginAdmin"} className="link">
+                            <i className="icon_admin"></i>
+                            <p>Administrador</p>
                             </Link>
+                            {/* <Link to={"/prueba"} className="link"> */}
+                                {/* <i className="icon_admin"></i> */}
+                                {/* <p>Administrador</p> */}
+                            {/* </Link> */}
                         </li>
                         <li className="li_links">
                             <Link href="#" className="link">

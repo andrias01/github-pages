@@ -13,10 +13,7 @@ export default defineConfig({
   // en consola
   // npm run deploy
   // https://www.youtube.com/watch?v=ZI7MXe-6HzA
-<<<<<<< HEAD
   // para netlify su configuracion es diferente dejar npm run build
   // y en package.json agregar dist
-=======
->>>>>>> DEV
   
 })
