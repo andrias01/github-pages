@@ -45,7 +45,7 @@ function Property() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!form.name || !form.peopleCapacity) return;
+    if (!form.propertyType || !form.propertyNumber) return;
 
     const payload = {
         propertyType: form.propertyType,
@@ -64,11 +64,11 @@ function Property() {
     setIsEditing(false);
   };
 
-  const handleEdit = (propertys) => {
+  const handleEdit = (property) => {
     setForm({
-      id: propertys.id || "",
-      propertyType: propertys.propertyType || "",
-      propertyNumber: propertys.propertyNumber || "",
+      id: property.id || "",
+      propertyType: property.propertyType || "",
+      propertyNumber: property.propertyNumber || "",
     });
     setIsEditing(true);
   };
@@ -100,7 +100,7 @@ function Property() {
             required
           />
           <input
-            type="propertyNumber"
+            type="text"
             name="propertyNumber"
             placeholder="Número de la Propiedad"
             value={form.propertyNumber}
@@ -119,6 +119,7 @@ function Property() {
             className="search-input"
           />
         </form>
+        
           {loading && <p>Cargando Viviendas...</p>}
           {error && <p style={{ color: "red" , margin: 10}}>{error}</p>}
 
