@@ -136,22 +136,23 @@ function ZonaComun() {
               required
             />
             
-            <select name="unidadTiempo">
-              <option 
-              value={form.usingTimeUnit} 
-              onChange={handleInputChange}
-              required>Minuto</option>
-              <option 
+            <select
+              name="usingTimeUnit"
               value={form.usingTimeUnit}
               onChange={handleInputChange}
-              required>Hora</option>
+              required
+            >
+              <option value="">Seleccione una opción</option>
+              <option value="Minutos">Minuto</option>
+              <option value="Hora">Hora</option>
             </select>
+
             {/* Poner Tiempo de uso, ya que no se sabe si se tendrà horas fijas o que el usuario ponga la hora */}
 
            
             <input
-              type="string"
-              name="norms"
+              type="String"
+              name="rule"
               placeholder="Normas De Uso"
               value={form.rule}
               onChange={handleInputChange}
@@ -196,8 +197,8 @@ function ZonaComun() {
                   <td>{commonZone.rule}</td>
 
                   <td>
-                    <button onClick={() => handleEdit(admin)}>Editar</button>
-                    <button onClick={() => handleDelete(admin.id)}>Eliminar</button>
+                    <button onClick={() => handleEdit(commonZone)}>Editar</button>
+                    <button onClick={() => handleDelete(commonZone.id)}>Eliminar</button>
                   </td>
                 </tr>
               ))}
