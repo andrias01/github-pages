@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import Header from "./Header";
 import { AdminContext } from "../contexts/Admin.context";
 import "../cssComponents/LoginAdmin.css";
+import Loading from "../loaders/LoadingCircle"; // Assuming Loading component is imported
 
 const LoginAdmin = () => {
     const [email, setEmail] = useState("");
@@ -33,7 +34,8 @@ const LoginAdmin = () => {
     };
 
     if (loading) {
-        return <div>Cargando administradores...</div>;
+        // return <div>Cargando administradores...</div>;
+        navigate("/Loading"); // Assuming Loading component is imported
     }
 
     if (!loading && admins.length === 0) {

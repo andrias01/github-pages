@@ -43,7 +43,7 @@ function NavBurguer() {
                             {/* </Link> */}
                         </li>
                         <li className="li_links">
-                            <Link href="#" className="link">
+                            <Link to={"/Loading"} className="link">
                                 <i className="icon_porteria"></i>
                                 <p>Portería</p>
                             </Link>

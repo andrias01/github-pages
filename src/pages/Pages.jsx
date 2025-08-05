@@ -5,6 +5,8 @@ import ShowAdmins from "../components/ShowAdmins"
 import AdminManagement from "../components/AdminManagement"
 import CommonZone from "../components/CommonZone"
 import Property from "../components/Property"
+import Loading from "../loaders/LoadingCircle"
+// import Loading from "../loaders/LoadingText"
 
 
 function Pages() {
@@ -16,7 +18,8 @@ function Pages() {
         <Route path="/ManagementAdmin" element={<AdminManagement />} />
         <Route path="/CommonZone" element={<CommonZone />} />
         <Route path="/Property" element={<Property />} />
-
+        <Route path="/Loading" element={<Loading />} />
+        <Route path="*" element={<HomePage />} />
 
 
     </Routes>
